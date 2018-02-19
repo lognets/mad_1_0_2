@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      AddAutoDebit
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page3">
+  <form id="addAutoDebit-form1">
+    <ion-item id="addAutoDebit-input2">
+      <ion-label floating>
+        Bill Payment For
+      </ion-label>
+      <ion-input type="text" placeholder="Bill Payment For" name="billPaymentFor"></ion-input>
+    </ion-item>
+    <ion-item id="addAutoDebit-input3">
+      <ion-label floating>
+        Service Provider Name
+      </ion-label>
+      <ion-input type="text" placeholder="Service Provider Name" name="Service Provider Name"></ion-input>
+    </ion-item>
+    <ion-item id="addAutoDebit-input4">
+      <ion-label floating>
+        Finalcial Institute
+      </ion-label>
+      <ion-input type="text" placeholder="Finalcial Institute" name="finalcialInstitute"></ion-input>
+    </ion-item>
+    <ion-item id="addAutoDebit-input7">
+      <ion-label floating>
+        Amount
+      </ion-label>
+      <ion-input type="text" placeholder="250" name="amount"></ion-input>
+    </ion-item>
+    <ion-item id="addAutoDebit-select1">
+      <ion-label>
+        Auto Debit From
+      </ion-label>
+      <ion-select name="autoDebitFrom">
+        <ion-option>
+          Saving/Checking
+        </ion-option>
+        <ion-option>
+          Visa
+        </ion-option>
+        <ion-option>
+          MasterCard
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item id="addAutoDebit-select2">
+      <ion-label>
+        Frequency
+      </ion-label>
+      <ion-select name="frequency">
+        <ion-option>
+          Weekly
+        </ion-option>
+        <ion-option>
+          Bi-Weekly
+        </ion-option>
+        <ion-option>
+          Monthly
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item id="addAutoDebit-input6">
+      <ion-label floating>
+        Withdrawl Date
+      </ion-label>
+      <ion-input type="date" placeholder="10/02/2018" name="WithdrawlDate  "></ion-input>
+    </ion-item>
+    <button id="addAutoDebit-button1" ion-button outline color="positive" block style="font-weight:500;">
+      <ion-icon name="add"></ion-icon>
+      Add
+    </button>
+  </form>
+</ion-content>

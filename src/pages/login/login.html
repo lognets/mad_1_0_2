@@ -1,0 +1,44 @@
+<ion-content class="background">
+  <h2>MAD
+    <br>
+  <ion-icon ios="ios-appstore" md="md-appstore"></ion-icon></h2>
+  <ion-card>
+    <ion-card-header>
+      Login
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-lines>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="email"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <p>Forgot Password?
+            <a> get here</a>
+          </p>
+        </ion-item>
+        <button ion-button color="danger" round block outline (click) = 'signInWithEmail()'>Login</button>
+      </ion-list>
+      <b>OR</b>
+       <button ion-button color="primary" round ion-left block  (click) = 'signInWithFacebook()'>
+        <ion-icon name="logo-facebook"></ion-icon>
+        <div>&nbsp; Login with Facebook</div>
+      </button> 
+      <button ion-button color="danger" ion-left block round (click) = 'signInWithGoogle()'>
+        <ion-icon name="logo-google"></ion-icon>
+        <div>&nbsp; Login with Google</div>
+      </button>
+      Dont have an account yet ? <div (click) ='signUp()'>Sign Up </div>
+     <!-- <button ion-button (click) ='signUp()' color="light" block round >  <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+      <div>&nbsp; Sign Up</div>
+    </button> -->
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

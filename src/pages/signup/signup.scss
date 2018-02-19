@@ -1,0 +1,33 @@
+page-signup {
+    .background{
+        width:100%;
+        height:100%;
+        background: linear-gradient(20deg,#E55D87,#5FC3E4); 
+        overflow: hidden;
+    }
+    .scroll-content{
+        text-align: center;
+    }
+    ion-card.card{
+        background: rgba(232,230,230,0.6);
+        border-radius:10px; 
+    }
+    .item{
+        background: rgba(232,230,230,0px);
+
+    }
+    ion-input{
+        border-bottom: #E55D87 solid 1px;
+    }
+    h2{
+        color:#fff;
+        font-size: 2.2em;
+        font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+        font-weight: lighter;
+    }
+    .scroll-content{
+        overflow: hidden;
+   }ion-card{
+       margin-bottom: 5%;
+   }
+}
