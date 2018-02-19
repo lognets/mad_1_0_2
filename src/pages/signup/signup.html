@@ -8,7 +8,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-list no-lines>
-          <ion-item>
+          <!-- <ion-item>
               <ion-label floating >First Name</ion-label>
               <ion-input [(ngModel)]="firstName" type="text"></ion-input>
             </ion-item>
@@ -16,21 +16,21 @@
             <ion-item>
               <ion-label floating >Last Name</ion-label>
               <ion-input [(ngModel)]="lastName" type="text"></ion-input>
-            </ion-item>
+            </ion-item> -->
         <ion-item>
           <ion-label floating >Email</ion-label>
-          <ion-input [(ngModel)]="email" type="email"></ion-input>
+          <ion-input [(ngModel)]="user.email" type="email"></ion-input>
         </ion-item>
       
         <ion-item>
           <ion-label floating >Password</ion-label>
-          <ion-input [(ngModel)]="password" type="password"></ion-input>
+          <ion-input [(ngModel)]="user.password" type="password"></ion-input>
         </ion-item>
 
         <br>
-        <button ion-button color="danger" block  round (click) = 'registerWithEmail()'>Sing Up</button>
-        
-        <button ion-button color="lite" color="light" block round (click) = 'goBack()'>Already registered? Go Back</button>
+        <button ion-button color="danger" block  round (click) = 'registerWithEmail(user)'>Sing Up</button>
+        Already registered? <div (click) ='goBack()'>Go Back</div>
+        <!-- <button ion-button color="lite" color="light" block round (click) = 'goBack()'>Already registered? Go Back</button> -->
       </ion-list>
       
    

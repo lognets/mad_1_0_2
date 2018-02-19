@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController ,NavParams} from 'ionic-angular';
+import { NavController,ToastController } from 'ionic-angular';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {  FirebaseListObservable } from "angularfire2/database-deprecated";
 import { AngularFireDatabase } from "angularfire2/database";
@@ -11,6 +11,8 @@ import { Observable } from 'rxjs/Observable';
 //import {HomePage} from '../tasks/tasks';
 import { HomePage } from '../home/home';
 //import { moveIn } from '../router.animations';
+
+import {User} from '../../models/user';
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
@@ -22,17 +24,11 @@ import { HomePage } from '../home/home';
 export class SignupPage {
   items: Observable<any[]>;
   error: any;
-  firstName :string ="";
-  lastName :string ="";
-  password :string ="";
-  email :string ="";
+  user ={} as User;
   constructor(public navCtrl: NavController,
-    private afAuth: AngularFireAuth, public db:AngularFireDatabase, public navParams: NavParams) {
+    private afAuth: AngularFireAuth, public db:AngularFireDatabase,private toast :ToastController) {
 
-      this.firstName=this.navParams.get('firstName');
-      this.lastName=this.navParams.get('lastName');
-      this.password=this.navParams.get('password');
-      this.email=this.navParams.get('email');
+     
      }
 
   
@@ -50,20 +46,24 @@ export class SignupPage {
   }
 
   
-  registerWithEmail(){ 
+ async registerWithEmail(user:User){ 
+   try{
    // console.log(this.firstName); console.log(this.lastName);
-
-      this.db.list('/user/contact').push({
-        firstName:this.firstName,
-        lastName:this.lastName,
-        email:this.email,
-        password:this.password
-      }).then(res => {
-        console.log(res);
-        this.navCtrl .push(  HomePage      )
-      }
-    
-    )  
+   const result = await this.afAuth.auth.
+                  createUserWithEmailAndPassword(user.email,user.password);
+     console.log(result);
+     if(result && result.uid){
+      this.navCtrl.setRoot(HomePage);
+    }
+   }catch(e){
+     console.error(e);
+     user.email='';
+      user.password=''; 
+     this.toast.create({
+      message: e.message,
+      duration:5000
+    }).present();   
+   }
        
   }
   goBack(){
