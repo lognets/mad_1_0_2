@@ -1,41 +1,58 @@
 <ion-content class="background">
   <h2>MAD
     <br>
-  <ion-icon ios="ios-appstore" md="md-appstore"></ion-icon></h2>
+    <ion-icon ios="ios-appstore" md="md-appstore"></ion-icon>
+  </h2>
   <ion-card>
     <ion-card-header>
-      Sign Up
+<div  (click)='goBack()'>  <ion-icon name="back"></ion-icon>&nbsp;  Already registered? Go Back</div>
     </ion-card-header>
     <ion-card-content>
-      <ion-list no-lines>
-          <!-- <ion-item>
-              <ion-label floating >First Name</ion-label>
-              <ion-input [(ngModel)]="firstName" type="text"></ion-input>
-            </ion-item>
-          
-            <ion-item>
-              <ion-label floating >Last Name</ion-label>
-              <ion-input [(ngModel)]="lastName" type="text"></ion-input>
-            </ion-item> -->
+      <ion-list >
         <ion-item>
-          <ion-label floating >Email</ion-label>
-          <ion-input [(ngModel)]="user.email" type="email"></ion-input>
+          <ion-label floating>First Name</ion-label>
+          <ion-input [(ngModel)]="user.firstName" type="text" ></ion-input>
         </ion-item>
-      
         <ion-item>
-          <ion-label floating >Password</ion-label>
+          <ion-label floating>Last Name</ion-label>
+          <ion-input [(ngModel)]="user.lastName" type="text" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input [(ngModel)]="user.email" type="email" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
           <ion-input [(ngModel)]="user.password" type="password"></ion-input>
         </ion-item>
-
-        <br>
-        <button ion-button color="danger" block  round (click) = 'registerWithEmail(user)'>Sing Up</button>
-        Already registered? <div (click) ='goBack()'>Go Back</div>
+        <ion-item id="addAutoDebit-select1">
+      <ion-label>
+        Gender
+      </ion-label>
+      <ion-select name="gender" [(ngModel)]="user.gender">
+        <ion-option value="Male" >
+          Male
+        </ion-option>
+        <ion-option value="Female">
+          Female
+        </ion-option>
+       
+      </ion-select>
+    </ion-item>    
+        
         <!-- <button ion-button color="lite" color="light" block round (click) = 'goBack()'>Already registered? Go Back</button> -->
       </ion-list>
-      
-   
+
+
     </ion-card-content>
   </ion-card>
 
 
-</ion-content>
+</ion-content >
+<ion-footer >
+  <ion-toolbar class="footer-background">
+    <button ion-button color="danger" block round outline (click)='registerWithEmail(user)'>  <ion-icon name="person"></ion-icon>&nbsp;   Sing Up</button> 
+       
+
+  </ion-toolbar>
+</ion-footer>

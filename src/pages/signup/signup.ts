@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,ToastController } from 'ionic-angular';
+import { NavController, ToastController, NavParams } from 'ionic-angular';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {  FirebaseListObservable } from "angularfire2/database-deprecated";
 import { AngularFireDatabase } from "angularfire2/database";
@@ -13,6 +13,7 @@ import { HomePage } from '../home/home';
 //import { moveIn } from '../router.animations';
 
 import {User} from '../../models/user';
+import { UserService } from "../../serivces/user-service/user-service";
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
@@ -26,7 +27,9 @@ export class SignupPage {
   error: any;
   user ={} as User;
   constructor(public navCtrl: NavController,
-    private afAuth: AngularFireAuth, public db:AngularFireDatabase,private toast :ToastController) {
+    private afAuth: AngularFireAuth, 
+    public db:AngularFireDatabase,private toast :ToastController,
+    private userService:UserService,public navParams: NavParams) {
 
      
      }
@@ -52,8 +55,9 @@ export class SignupPage {
    const result = await this.afAuth.auth.
                   createUserWithEmailAndPassword(user.email,user.password);
      console.log(result);
-     if(result && result.uid){
-      this.navCtrl.setRoot(HomePage);
+     if(result && result.uid){     
+        this.insertUserDetails(user,result.uid);
+        this.userService.updateUID(user,result.uid);
     }
    }catch(e){
      console.error(e);
@@ -68,5 +72,31 @@ export class SignupPage {
   }
   goBack(){
     this.navCtrl.pop();
+  }
+ async insertUserDetails(user,uid){
+ try{
+
+    const contact = await this.userService.addItem(user,uid);
+    
+    if(contact && contact.key){
+      console.log(contact.key);
+      this.userService.updateContactKey(uid,contact.key);
+   
+    }
+    
+    this.navCtrl.setRoot(HomePage);
+   
+
+    
+   
+      }catch(err){
+         console.error(err);
+        user.email='';
+      user.password=''; 
+        this.toast.create({
+      message: err.message,
+      duration:5000
+    }).present();   
+      }
   }
 }

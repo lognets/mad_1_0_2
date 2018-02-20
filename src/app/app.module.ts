@@ -25,6 +25,8 @@ import { GroupPage } from '../pages/group/group';
 import { ProfilePage } from '../pages/profile/profile';
 import { SettingsPage } from '../pages/settings/settings';
 import { SignupPage } from '../pages/signup/signup';
+import { UserService } from "../serivces/user-service/user-service";
+import { BasicPage } from '../pages/sliders/pages';
 
 export const  firebaseConfig = {
   apiKey: "AIzaSyAIeYGIUemE5NEMeZM8hVPJ1gJCE0VhtO4",
@@ -49,7 +51,8 @@ export const  firebaseConfig = {
     GroupPage,
     ProfilePage,
     SettingsPage,
-    LoginPage
+    LoginPage,
+    BasicPage
   ],
   imports: [
     BrowserModule,
@@ -73,13 +76,15 @@ export const  firebaseConfig = {
     SettingsPage,
     TabsPage,
     ContactPage,
-    LoginPage
+    LoginPage,
+    BasicPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserService
   ]
 })
 export class AppModule {}
